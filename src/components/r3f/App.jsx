@@ -6,6 +6,7 @@ import {
 } from "@react-three/postprocessing";
 import { Scene } from "./Scene";
 import { Stats } from "@react-three/drei";
+import { Leva } from "leva";
 
 function App() {
   return (
@@ -49,7 +50,9 @@ function App() {
             "linear-gradient(to top, rgba(0, 1, 31, 0.8) 1%, transparent 50%)",
         }}
       />
-      <Stats />
+
+      {/* <Stats /> */}
+      <Leva hidden />
     </div>
   );
 }

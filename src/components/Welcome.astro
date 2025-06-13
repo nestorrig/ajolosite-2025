@@ -1,130 +1,39 @@
 ---
-import App from "./r3f/App";
+import WebGL from "./WebGL.astro";
+import Hero from "./Hero.astro";
+import Footer from "./Footer.astro";
+
 
 
 ---
 
 <main>
-	<!-- <h1>Welcome to Astro!</h1>
-	<p>
-		This is a simple Astro component that serves as a welcome message.
-		You can customize it further by adding more content or styles.
-	</p>
-	<p>
-		Explore the <a href="https://astro.build">Astro documentation</a> to learn more about building your site.
-	</p> -->
-	<div class="webgl">
-		<App client:load />
-	</div>
+	<WebGL />
 
-	<span>Hola mundo</span>
+
+	<section class="UI">
+		<Hero />
+	</section>
+	<Footer/>
 </main>
 
-<!-- // ...existing code...
-<script>
-  function handleOrientation(event) {
-    alert("Device Orientation Event: " +
-      "Alpha: " + event.alpha + ", " +
-      "Beta: " + event.beta + ", " +
-      "Gamma: " + event.gamma);
-  }
-
-  function requestDeviceOrientation() {
-    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-      // iOS 13+
-      DeviceOrientationEvent.requestPermission()
-        .then(permissionState => {
-          if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', handleOrientation);
-          } else {
-            alert('Permiso para acceder a la orientación del dispositivo denegado.');
-          }
-        })
-        .catch(error => {
-          console.error('Error al solicitar permiso de orientación:', error);
-          alert('No se pudo solicitar permiso para la orientación del dispositivo.');
-        });
-    } else if (typeof DeviceOrientationEvent !== 'undefined') {
-      // Navegadores no iOS o iOS < 13
-      window.addEventListener('deviceorientation', handleOrientation);
-    } else {
-      alert('La API de Orientación del Dispositivo no es compatible con este navegador.');
-    }
-  }
-
-  // Podrías llamar a requestDeviceOrientation() al hacer clic en un botón,
-  // ya que la solicitud de permisos a menudo necesita una interacción del usuario.
-  // Por ejemplo, si tienes un botón con id="requestPermissionButton":
-  // document.getElementById('requestPermissionButton')?.addEventListener('click', requestDeviceOrientation);
-
-  // O para probar directamente (puede que no funcione en iOS sin interacción del usuario):
-  // requestDeviceOrientation();
-
-  // Es mejor adjuntar la solicitud a una acción del usuario, como un clic de botón:
-  // Ejemplo: <button id="orientacionBtn">Obtener Orientación</button>
-  const orientacionBtn = document.createElement('button');
-  orientacionBtn.id = 'orientacionBtn';
-  orientacionBtn.textContent = 'Obtener Orientación';
-	orientacionBtn.style.position = 'fixed';
-	orientacionBtn.style.top = '10px';
-  orientacionBtn.onclick = requestDeviceOrientation;
-  document.body.appendChild(orientacionBtn); // Añade el botón al cuerpo del documento
-
-  // Elimina el listener original si aún existe para evitar duplicados
-  // window.removeEventListener("deviceorientation", ...); // Necesitarías la referencia a la función original
-</script>
-// ...existing code... -->
-
 <style>
-	main {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 2rem;
-		font-family: Arial, sans-serif;
-	}
-	span {
-		position: fixed;
-		top: 10px;
-		right: 10px;
-		display: block;
-		margin-top: 1rem;
-		font-size: 1.2rem;
-		color: #333;
-	}
 
-	#root,
-body,
-canvas {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  background-color: #121212;
-}
-
-	.webgl {
+* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: "Lato", sans-serif;
+	}
+	
+	.UI {
+		pointer-events: none;
+		color: #fff;
 		position: fixed;
-		top: 0;
-		left: 0;
 		width: 100%;
 		height: 100%;
-	}
-
-	h1 {
-		color: #333;
-	}
-
-	p {
-		line-height: 1.6;
-		color: #555;
-	}
-
-	a {
-		color: #0070f3;
-		text-decoration: none;
-	}
-
-	a:hover {
-		text-decoration: underline;
+		top: 0;
+		left: 0;
+		padding: 16px;
 	}
 </style>

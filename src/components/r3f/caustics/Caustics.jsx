@@ -1,7 +1,7 @@
 import { useFBO } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { patchShaders } from "gl-noise/build/glNoise.m";
-import { useEffect, useMemo, useRef } from "react";
+import { use, useEffect, useMemo, useRef } from "react";
 import { BackSide } from "three";
 import CausticLight from "./CausticLight";
 import { NormalMaterial } from "./NormalMaterial";
@@ -117,6 +117,19 @@ export default function Caustics({ children }) {
     }),
     []
   );
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      const newSize = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+      fbo.setSize(newSize.width * dpr, newSize.height * dpr);
+      normalFbo.setSize(newSize.width * dpr, newSize.height * dpr);
+      positionFbo.setSize(newSize.width * dpr, newSize.height * dpr);
+      uniforms.uResolution.value = [newSize.width * dpr, newSize.height * dpr];
+    });
+  }, [fbo, normalFbo, positionFbo, dpr, uniforms]);
 
   useFrame(({ scene, camera, gl }, dt) => {
     groupRef.current.visible = true;

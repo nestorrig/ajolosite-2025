@@ -1,0 +1,127 @@
+---
+import Image from "astro/components/Image.astro"
+import Logo from "../assets/ajolotes.png"
+import Footer from "./Footer.astro"
+---
+
+<article>
+
+  <!-- links de redes sociales -->
+   <h1>
+     <span>
+       AWS User Group Ajolotes en la Nube
+       <Image src={Logo} alt="A bird." width="72"  />
+     </span>
+   </h1>
+
+  <p>
+    Este grupo está enfocado en brindar apoyo y conocimiento sobre todo lo relacionado a AWS, es decir, aprenderás sobre el uso, la implementación y la optimización de los servicios de Amazon Web Services (AWS).
+
+    Un grupo enfocado en AWS es un espacio de aprendizaje, colaboración y networking para aquellos interesados en aprovechar al máximo las capacidades y beneficios de la plataforma de Amazon Web Services.
+
+    Y recuerda, somos el User Group oficial de AWS en la CDMX.
+  </p>
+</article>
+
+
+<style>
+  article {
+    max-width: 800px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+  }
+
+  article h1 {
+    font-size: 2.6rem;
+  }
+
+  article h1 span {
+    display: block;
+  }
+
+  article p {
+    white-space: pre-line;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: white;
+    font-weight: 700;
+    text-shadow: 0.4px 0.4px #fd8205;
+  }
+
+  article img {
+    display: inline-block;
+    position: absolute;
+    margin-left: 16px;
+    margin-top: 4px;
+    width: 48px;
+    height: 55px;
+  }
+
+  @media screen and (min-width: 768px) {
+    article {
+      padding-left: 54px;
+      max-height: 85vh;
+    }
+    article h1 {
+      font-size: 4rem;
+    }
+
+    article p {
+      width: 60ch;
+      font-size: 1rem;
+    }
+
+    article img {
+      width: 72px;
+      height: 83px;
+
+      margin-left: 8px;
+      margin-top: 2px;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+  const split = new SplitText("h1 span", { type: "words", mask:"words", wordsClass: "word" });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.from([split.words, "article img"], {
+      duration: 1,
+      opacity: 0,
+      delay: 0.5,
+      y: "100%",
+      stagger: 0.1,
+      ease: "power2.out",
+    });
+    gsap.from("article p", {
+      duration: 1,
+      opacity: 0,
+      delay: 1.5,
+      y: 50,
+      ease: "power2.out",
+      
+    });
+
+    gsap.to([split.words, "article img"], {
+      duration: 2,
+      delay: 2.5,
+      keyframes: {
+        y: [0, 8,  0],
+        color: ["#fff", "rgb(203,186,233)", "#fff"],
+        ease: "power1.inOut"
+      },
+      stagger: 0.1,
+      repeat: -1,
+      repeatDelay: 1.5,
+    });
+  });
+
+</script>
