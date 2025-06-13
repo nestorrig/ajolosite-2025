@@ -7,12 +7,15 @@ import Footer from "./Footer.astro"
 <article>
 
   <!-- links de redes sociales -->
-   <h1>
-     <span>
-       AWS User Group Ajolotes en la Nube
-       <Image src={Logo} alt="A bird." width="72"  />
-     </span>
-   </h1>
+   <div>
+     <h1>
+       <span>
+         AWS User Group Ajolotes en la Nube
+         <Image src={Logo} alt="A bird." width="72"  />
+       </span>
+     </h1>
+     <Footer />
+   </div>
 
   <p>
     Este grupo está enfocado en brindar apoyo y conocimiento sobre todo lo relacionado a AWS, es decir, aprenderás sobre el uso, la implementación y la optimización de los servicios de Amazon Web Services (AWS).
@@ -27,7 +30,7 @@ import Footer from "./Footer.astro"
 <style>
   article {
     max-width: 800px;
-    max-height: 80vh;
+    max-height: 800px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,9 +57,9 @@ import Footer from "./Footer.astro"
 
   article img {
     display: inline-block;
-    position: absolute;
-    margin-left: 16px;
-    margin-top: 4px;
+    position: relative;
+    left: 12px;
+    top: 8px;
     width: 48px;
     height: 55px;
   }
@@ -108,6 +111,15 @@ import Footer from "./Footer.astro"
       y: 50,
       ease: "power2.out",
       
+    });
+
+    gsap.from("article a", {
+      duration: 1,
+      opacity: 0,
+      delay: 1,
+      y: 50,
+      ease: "power2.out",
+      stagger: 0.1,
     });
 
     gsap.to([split.words, "article img"], {

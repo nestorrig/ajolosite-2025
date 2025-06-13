@@ -53,10 +53,7 @@
 
 <style>
 footer {
-  position: fixed;
-  bottom: 16px;
-  left: 16px;
-  width: 100%;
+  pointer-events: none;
 }
 footer div {
   display: flex;
@@ -64,6 +61,7 @@ footer div {
   gap: 12px;
 }
 footer a {
+  pointer-events: all;
   color: #fff;
   text-decoration: none;
   display: flex;
@@ -92,9 +90,5 @@ svg {
   width: 24px;
   height: 24px;
 }
-@media screen and (min-width: 768px) {
-    footer {
-      left: 70px;
-    }
-  }
+
 </style>
