@@ -39,9 +39,9 @@ function Thing() {
           <Axolote />
         </Float>
 
-        <Float floatIntensity={5} rotationIntensity={2}>
+        {/* <Float floatIntensity={5} rotationIntensity={2}>
           <Aws position={[-0.5, 0.5, -1.5]} scale={[0.6, 0.6, 0.6]} />
-        </Float>
+        </Float> */}
 
         <Float floatIntensity={5} rotationIntensity={2}>
           <Cubes />

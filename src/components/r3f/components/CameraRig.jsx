@@ -7,7 +7,7 @@ export function CameraRig() {
     easing.damp3(
       state.camera.position,
       [
-        -3 + (state.pointer.x * state.viewport.width) / 6,
+        -3 + (state.pointer.x * state.viewport.width) / 20,
         (4 + state.pointer.y) / 2,
         5,
       ],
